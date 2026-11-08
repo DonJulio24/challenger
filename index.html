@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#93c572">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Challenger">
+  <title>Challenger</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>🏆 Challenger</h1>
+    <div class="top-actions">
+      <button id="share-btn" class="ghost" hidden title="Partager le lien">🔗</button>
+      <button id="add-btn" class="primary">+ Nouveau jeu</button>
+    </div>
+  </header>
+
+  <div id="mode-banner" class="banner" hidden></div>
+
+  <!-- Choix du code secret (mode Firebase uniquement) -->
+  <section id="room-screen" class="room" hidden>
+    <h2>Votre code secret</h2>
+    <p>Choisissez un code que vous seuls connaissez. Entrez le même code sur vos deux téléphones pour partager les scores.</p>
+    <form id="room-form">
+      <input id="room-input" type="text" minlength="8" maxlength="64" autocomplete="off"
+             autocapitalize="off" spellcheck="false" placeholder="8 caractères minimum" required>
+      <div class="row">
+        <button type="button" id="room-random" class="ghost">Générer</button>
+        <button type="submit" class="primary">Valider</button>
+      </div>
+    </form>
+  </section>
+
+  <main id="games"></main>
+  <p id="empty" class="empty" hidden>Aucun jeu pour l'instant.<br>Créez-en un avec « + Nouveau jeu ».</p>
+
+  <dialog id="game-dialog">
+    <form id="game-form" method="dialog">
+      <h2>Nouveau jeu</h2>
+      <label>Nom du jeu
+        <input name="name" required maxlength="60" placeholder="T'as une tache, pistache">
+      </label>
+      <div class="row">
+        <label>Joueur 1 <input name="p1" required maxlength="20"></label>
+        <label>Joueur 2 <input name="p2" required maxlength="20"></label>
+      </div>
+      <div class="row end">
+        <button type="button" class="ghost" data-close>Annuler</button>
+        <button type="submit" class="primary">Créer</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="menu-dialog">
+    <h2 id="menu-title"></h2>
+    <div class="menu-list">
+      <button id="menu-reset" class="ghost">Remettre à 0 – 0</button>
+      <button id="menu-delete" class="ghost danger">Supprimer le jeu</button>
+      <button class="ghost" data-close>Fermer</button>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast" hidden>
+    <span id="toast-text"></span>
+    <button id="toast-undo">Annuler</button>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
