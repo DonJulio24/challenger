@@ -40,30 +40,48 @@
   <main id="games"></main>
   <p id="empty" class="empty" hidden>Aucun jeu pour l'instant.<br>Créez-en un avec « + Nouveau jeu ».</p>
 
+  <!-- Création et réglages d'un jeu (même fenêtre) -->
   <dialog id="game-dialog">
-    <form id="game-form" method="dialog">
-      <h2>Nouveau jeu</h2>
+    <form id="game-form">
+      <h2 id="game-dialog-title">Nouveau jeu</h2>
       <label>Nom du jeu
         <input name="name" required maxlength="60" placeholder="T'as une tache, pistache">
       </label>
-      <div class="row">
-        <label>Joueur 1 <input name="p1" required maxlength="20"></label>
-        <label>Joueur 2 <input name="p2" required maxlength="20"></label>
+
+      <div class="section-title">Joueurs</div>
+      <div class="player-rows-head">
+        <span>Nom</span><span class="col-score">Points</span><span class="col-score col-sets">Manches</span><span></span>
       </div>
+      <div id="player-rows"></div>
+      <button type="button" id="add-player" class="ghost small">+ Ajouter un joueur</button>
+
+      <div class="section-title">Manches</div>
+      <label class="check">
+        <input type="checkbox" name="setsMode"> Jouer en manches
+      </label>
+      <label class="sets-only">Points pour gagner une manche
+        <input type="number" name="setTarget" min="1" max="99" value="3" inputmode="numeric">
+      </label>
+      <p class="hint sets-only">Quand quelqu'un atteint ce nombre de points, il gagne la manche (+1) et les points repartent à zéro.</p>
+
+      <div class="edit-only danger-zone">
+        <button type="button" id="reset-game" class="ghost">Remettre les scores à zéro</button>
+        <button type="button" id="delete-game" class="ghost danger">Supprimer le jeu</button>
+      </div>
+
       <div class="row end">
         <button type="button" class="ghost" data-close>Annuler</button>
-        <button type="submit" class="primary">Créer</button>
+        <button type="submit" class="primary" id="game-submit">Créer</button>
       </div>
     </form>
   </dialog>
 
-  <dialog id="menu-dialog">
-    <h2 id="menu-title"></h2>
-    <div class="menu-list">
-      <button id="menu-reset" class="ghost">Remettre à 0 – 0</button>
-      <button id="menu-delete" class="ghost danger">Supprimer le jeu</button>
+  <dialog id="history-dialog">
+    <div class="history-head">
+      <h2 id="history-title">Historique</h2>
       <button class="ghost" data-close>Fermer</button>
     </div>
+    <div id="history-list"></div>
   </dialog>
 
   <div id="toast" class="toast" hidden>

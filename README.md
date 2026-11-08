@@ -2,9 +2,13 @@
 
 Compteur de scores pour nos petits défis à deux (« T'as une tache, pistache », etc.).
 
-- Créer un jeu entre 2 personnes
+- Créer un jeu de 2 à 12 joueurs
 - +1 / −1 à tout moment, avec un bouton « Annuler » si on s'est trompé
-- Les scores sont synchronisés en temps réel entre nos deux téléphones (Firebase)
+- Mode **manches** (⚙️) : la première personne à N points gagne la manche
+- **Historique** (🕘) de chaque point, manche, correction ou annulation
+- Réglages (⚙️) : renommer, ajouter/retirer des joueurs, corriger un score
+- ⬆️ pour monter un jeu dans la liste
+- Les scores sont synchronisés en temps réel entre nos téléphones (Firebase)
 
 Site statique (HTML/CSS/JS, sans build), hébergé sur GitHub Pages.
 
